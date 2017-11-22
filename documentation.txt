@@ -1,4 +1,4 @@
 youtube_link: https://www.youtube.com/watch?v=9Wbfk16jEOk
 crispy_forms: http://django-crispy-forms.readthedocs.io/en/latest/install.html
 grid_options: https://getbootstrap.com/docs/3.3/css/
-django-allauth: http://django-allauth.readthedocs.io/en/latest/installation.html
+django-allauth: http://django-allauth.readthedocs.io/en/latest/installation.html    http://django-allauth.readthedocs.io/en/latest/configuration.html
