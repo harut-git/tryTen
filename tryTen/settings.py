@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'harut.ghubasaryan@gmail.com'
-EMAIL_HOST_PASSWORD = 'Harut123321'
+EMAIL_HOST_PASSWORD = 'pswd'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'shop',
+    'generate',
 ]
 
 MIDDLEWARE = [

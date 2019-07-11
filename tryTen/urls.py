@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from profiles import views as profiles_views
 from contact import views as contact_views
-from shop import views as shop_views
+from generate import views as shop_views
 
 
 urlpatterns = [

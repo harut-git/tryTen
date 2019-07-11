@@ -1,11 +1,13 @@
 from django.shortcuts import render
 
-from forms import ContactForm
 from django.conf import settings
 from django.core.mail import send_mail
 
 
 # Create your views here.
+from contact.forms import ContactForm
+
+
 def contact(request):
     title = 'Contact'
     form = ContactForm(request.POST or None)
