@@ -30,7 +30,7 @@ SECRET_KEY = 'z--b8z)b4!*fd-ly-9cnt^z5zm+lwpvv3s@h*xsr7hzhx-up0q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.10.110.233']
 
 # Application definition
 
@@ -148,7 +148,7 @@ if DEBUG:
 
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SITE_ID = 1
 

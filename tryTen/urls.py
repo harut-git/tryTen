@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from profiles import views as profiles_views
 from contact import views as contact_views
-from generate import views as shop_views
+from generate import views as generate_views
 
 
 urlpatterns = [
@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^about/$', profiles_views.about, name='about'),
     url(r'^profile/$', profiles_views.userProfile, name='profile'),
     url(r'^contact/$', contact_views.contact, name='contact'),
-    url(r'^products/$', shop_views.products, name='products'),
+    url(r'^products/$', generate_views.products, name='products'),
+    url(r'^generate/$', generate_views.generate_form, name='generate_form'),
     url(r'^accounts/', include('allauth.urls')),
 
 ]
