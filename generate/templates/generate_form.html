@@ -1,11 +1,33 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-<div class="row">
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+
+
+{% if confirm_message %}
+    <p>{{ confirm_message }}</p>
+    <a href ="{% static 'Configs/generated.reg' %}"></a>
+{% endif %}
+{% if form1 %}
+
+<form method="POST" action=""> {% csrf_token %}
+    <div class="row">
+    <div class="col-6 col-sm-3 col-sm-offset-1">
+        <h1> OutlookAddin </h1>
+        {{ form1|crispy }}
+      </div>
+    <div class="col-6 col-sm-3 col-sm-offset-1">
+        <h1> iManage </h1>
+        {{ form2|crispy }}
+      </div>
+    <div class="col-6 col-sm-3 col-sm-offset-1">
+        <h1> iwork </h1>
+        {{ form3|crispy }}
+      </div>
+    </div>
+<input type="submit" value="submit form" class="btn btn-default" />
 </form>
-</div>
+
+{% endif %}
+
 {% endblock %}

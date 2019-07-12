@@ -1,0 +1,14 @@
+[-HKEY_CURRENT_USER\Software\Zero]
+[HKEY_CURRENT_USER\Software\Zero]
+
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin]
+
+
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses]
+
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage]
+
+
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets]
+
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets\iwork]
