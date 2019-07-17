@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'generate',
+    'smtp_send',
+    'widget_tweaks',
+    'demo'
 ]
 
 MIDDLEWARE = [

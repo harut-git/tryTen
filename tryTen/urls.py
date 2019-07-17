@@ -20,7 +20,8 @@ from django.conf.urls import url, include
 from profiles import views as profiles_views
 from contact import views as contact_views
 from generate import views as generate_views
-
+from smtp_send import views as smtp_views
+from demo import views as dynamic_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -30,6 +31,8 @@ urlpatterns = [
     url(r'^contact/$', contact_views.contact, name='contact'),
     url(r'^products/$', generate_views.products, name='products'),
     url(r'^generate/$', generate_views.generate_form, name='generate_form'),
+    url(r'^send/$', smtp_views.sender_form, name='sender_form'),
+    url(r'^dynamic/$', dynamic_views.dynamic, name='dynamic'),
     url(r'^accounts/', include('allauth.urls')),
 
 ]

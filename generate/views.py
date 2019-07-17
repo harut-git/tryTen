@@ -19,12 +19,14 @@ def add_to_config_by_path(form, path, lines):
                 cleaned = str(hex(form.cleaned_data[j])).replace('0x', '')
                 base = base[:-len(cleaned)]
                 form.cleaned_data[j] = base+cleaned
-            new_lines.insert(lines.index(path) + 1, '"{}"="{}"\n'.format(form.fields[j].label, form.cleaned_data[j]))
+                new_lines.insert(lines.index(path) + 1, '"{}"={}\n'.format(form.fields[j].label, form.cleaned_data[j]))
+            else:
+                new_lines.insert(lines.index(path) + 1,
+                                 '"{}"="{}"\n'.format(form.fields[j].label, form.cleaned_data[j]))
     return new_lines
 
     # f = open('filename.reg', 'w+')
     # f.write("")
-
 
 
 def products(request):
@@ -34,9 +36,34 @@ def products(request):
 
 
 def generate_form(request):
-    form1 = OutlookAddinForm(request.POST or None)
-    form2 = IManageForm(request.POST or None)
-    form3 = CabinetForm(request.POST or None)
+    form1 = OutlookAddinForm(request.POST or None, initial={
+        'attributes_sync_refresh_days': 1,
+        'outlook_folder_sync_depth_days': 60,
+        'outlook_folder_resync_interval_min': 420,
+        'outlook_folder_scan_interval_ms': 100,
+        'item_resync_interval_ms': 5,
+        'batch_processing_interval_ms': 50,
+        'reconnect_timeout_min': 1,
+        'max_archive_files': 5,
+        'clean_statuses_and_categories': 1,
+        'selection_timeout_ms': 5,
+        'status_refresh_interval_min': 0,
+        'disable_addin_subject_key': 'zero-deactivate',
+        'use_categories': 1,
+        'current_dms': 'iManage'
+    })
+    form2 = IManageForm(request.POST or None, initial={
+        'supported_auth_type': 2,
+        'primary_cabinet_id': 'iwork',
+        'base_uri': 'https://10.1.1.5/'
+    })
+    form3 = CabinetForm(request.POST or None, initial={
+        'prediction_attributes': '1,2,0',
+        'default_folder_for_email': 'EMAIL',
+        'default_class_for_email': "",
+        'side_pane_attributes': "1,2,0,3",
+        'top_pane_attributes': "1,2,0,3"
+    })
     confirm_message = None
     if form1.is_valid() and form2.is_valid() and form3.is_valid():
         k = open('static/static/Configs/base_config.reg', 'r')

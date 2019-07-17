@@ -36,6 +36,6 @@ class IManageForm(forms.Form):
 class CabinetForm(forms.Form):
     prediction_attributes = forms.CharField(required=True, label='PredictionAttributes')
     default_folder_for_email = forms.CharField(required=True, label='DefaultFolderForEmail')
-    default_class_for_email = forms.CharField(required=True, label='DefaultClassForEmail')
+    default_class_for_email = forms.CharField(required=False, label='DefaultClassForEmail')
     side_pane_attributes = forms.CharField(required=True, label='SidePaneAttributes')
     top_pane_attributes = forms.CharField(required=True, label='TopPaneAttributes')

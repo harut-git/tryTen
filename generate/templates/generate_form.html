@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'demo/base.html' %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
 
@@ -6,7 +7,7 @@
 
 {% if confirm_message %}
     <p>{{ confirm_message }}</p>
-    <a href ="{% static 'Configs/generated.reg' %}"></a>
+    <a href="{% static "Configs/generated.reg" %}">Download!</a>
 {% endif %}
 {% if form1 %}
 
@@ -23,9 +24,9 @@
     <div class="col-6 col-sm-3 col-sm-offset-1">
         <h1> iwork </h1>
         {{ form3|crispy }}
-      </div>
+        <input type="submit" value="submit form" class="btn btn-default" />
     </div>
-<input type="submit" value="submit form" class="btn btn-default" />
+    </div>
 </form>
 
 {% endif %}

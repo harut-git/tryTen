@@ -22,7 +22,7 @@ def contact(request):
         emailTo = [settings.EMAIL_HOST_USER]
         send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
         title = "Thanks!"
-        confirm_message = "Thanks for message!"
+        confirm_message = "Messages were sent!"
         form = None
 
     context = {'title': title, 'form': form, 'confirm_message': confirm_message, }

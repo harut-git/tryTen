@@ -1,39 +1,41 @@
+Windows Registry Editor Version 5.00
+
 [-HKEY_CURRENT_USER\Software\Zero]
 [HKEY_CURRENT_USER\Software\Zero]
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin]
 "CurrentDms"="iManage"
-"UseCategories"="dword:00000001"
-"DisableAddInSubjectKey"="1"
-"StatusRefreshIntervalMin"="dword:00000001"
-"SelectionTimeoutMs"="dword:00000001"
-"CleanStatusesAndCategories"="dword:00000001"
-"MaxArchiveFiles"="dword:00000001"
-"ReconnectTimeoutMin"="dword:00000001"
-"BatchProcessingIntervalMs"="dword:00000001"
-"ItemResyncIntervalMs"="dword:00000001"
-"OutlookFolderScanIntervalMs"="dword:00000001"
-"OutlookFolderResyncIntervalMin"="dword:00000001"
-"OutlookFolderSyncDepthDays"="dword:00000001"
-"AttributesSyncRefreshDays"="dword:00000001"
+"UseCategories"=dword:00000001
+"DisableAddInSubjectKey"="zero-deactivate"
+"StatusRefreshIntervalMin"=dword:00000000
+"SelectionTimeoutMs"=dword:00000005
+"CleanStatusesAndCategories"=dword:00000001
+"MaxArchiveFiles"=dword:00000005
+"ReconnectTimeoutMin"=dword:00000001
+"BatchProcessingIntervalMs"=dword:00000032
+"ItemResyncIntervalMs"=dword:00000005
+"OutlookFolderScanIntervalMs"=dword:00000064
+"OutlookFolderResyncIntervalMin"=dword:000001a4
+"OutlookFolderSyncDepthDays"=dword:0000003c
+"AttributesSyncRefreshDays"=dword:00000001
 "ServiceLogLevel"="info"
 "ClientLogLevel"="info"
-"InternalDomains"="zeroapp.ai"
+"InternalDomains"=""
 
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses]
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage]
-"BaseUri"="http://aaa.aaa"
-"PrimaryCabinetId"="12"
-"SupportedAuthType"="dword:0000000c"
+"BaseUri"="https://10.1.1.5/"
+"PrimaryCabinetId"="iwork"
+"SupportedAuthType"=dword:00000002
 
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets]
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets\iwork]
-"TopPaneAttributes"="12"
-"SidePaneAttributes"="12"
-"DefaultClassForEmail"="12"
-"DefaultFolderForEmail"="12"
-"PredictionAttributes"="12"
+"TopPaneAttributes"="1,2,0,3"
+"SidePaneAttributes"="1,2,0,3"
+"DefaultClassForEmail"=""
+"DefaultFolderForEmail"="EMAIL"
+"PredictionAttributes"="1,2,0"
