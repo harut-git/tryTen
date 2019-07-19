@@ -8,9 +8,3 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses]
 
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage]
-
-
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets]
-
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets\iwork]

@@ -1,7 +1,7 @@
 from django import forms
 from django.shortcuts import render
 
-from demo.forms import DmsSettingsForm, SelectDmsForm
+from demo.forms import DmsSettingsForm, SelectDmsForm, IManageCabinetForm
 from .models import *
 
 import json
@@ -14,7 +14,7 @@ def index(request):
 
 ## Dynamic forms demo
 
-def dynamic(request):
+def dms(request):
     context = {}
     content = {}
 
@@ -64,4 +64,32 @@ def dynamic(request):
     IngForm = DynamicIngridientsForm(content)
     context['dms_settings_form'] = IngForm
     context['dms_form'] = SelectDmsForm(request.POST or None)
+    if IngForm.is_valid():
+        k = open('static/static/Configs/base_config.reg', 'r')
+        lines = k.readlines()
+        new_lines = lines
+        k.close()
+        path = '[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\\' + ckb.dms_name
+        for j in IngForm.cleaned_data:
+            if type(IngForm.cleaned_data[j]) is int:
+                base = 'dword:00000000'
+                cleaned = str(hex(IngForm.cleaned_data[j])).replace('0x', '')
+                base = base[:-len(cleaned)]
+                IngForm.cleaned_data[j] = base + cleaned
+                new_lines.insert(lines.index(path) + 1, '"{}"={}\n'.format(IngForm.fields[j].label, IngForm.cleaned_data[j]))
+            else:
+                new_lines.insert(lines.index(path) + 1,
+                                 '"{}"="{}"\n'.format(IngForm.fields[j].label, IngForm.cleaned_data[j]))
+        k = open('static/static/Configs/generated.reg', 'w+')
+        k.writelines(new_lines)
+        k.close()
     return render(request, "demo/dynamic.html", context)
+
+
+def cabinets(request):
+    context = {}
+    form = IManageCabinetForm(request.POST or None)
+    context['CabinetForm'] = form
+    # if form.is_valid():
+
+    return render(request, "demo/cabinet.html", context)

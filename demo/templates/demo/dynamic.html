@@ -8,7 +8,7 @@
   <div class="col-sm-12">
     <div class="page-header">
       <h2>Choose DMS</h2>
-      <form action="{% url 'dynamic' %}" class="form-hotizontal" method="POST">
+      <form action="{% url 'dms' %}" class="form-hotizontal" method="POST">
         {% csrf_token %}
         {% for field in dms_form %}
         <div class="form-group row">
@@ -23,7 +23,7 @@
           <div class="col-sm-6">
             <div class="btn-group btn-group-justified" role="group">
               <div class="btn-group" role="group">
-                <button class="btn btn-primary" type="submit">Choose Recipe</button>
+                <button class="btn btn-primary" type="submit">Choose DMS</button>
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@
       </form>
     </div>
     <h3>Specify DMS Settings</h3>
-    <form action="{% url 'dynamic' %}" class="form-hotizontal" method="POST">
+    <form action="{% url 'dms' %}" class="form-hotizontal" method="POST">
       {% csrf_token %}
       {% for field in dms_settings_form %}
       <div class="form-group row">
@@ -46,7 +46,7 @@
         <div class="col-sm-6">
           <div class="btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">
-              <button class="btn btn-primary" type="submit">Specify Ingridients</button>
+              <button class="btn btn-primary" type="submit">Save DMS Settings</button>
             </div>
           </div>
         </div>

@@ -1,0 +1,34 @@
+{% extends 'demo/base.html' %}
+{% block title %}Dynamic Forms{% endblock %}
+{% block dynamic_active %}active{% endblock %}
+{% load widget_tweaks %}
+
+{% block body %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-header">
+      <h2>Add Cabinet Settings</h2>
+      <form action="{% url 'cabinets' %}" class="form-hotizontal" method="POST">
+        {% csrf_token %}
+        {% for field in CabinetForm %}
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field|add_class:'form-control' }}
+          </div>
+        </div>
+        {% endfor %}
+        <br>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="submit" class="btn btn-primary">Add Cabinet</button>
+                <a class="btn btn-success" href="{% url 'sender_form' %}">Finalize</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
