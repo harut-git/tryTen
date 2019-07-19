@@ -65,18 +65,21 @@ def dms(request):
     context['dms_settings_form'] = IngForm
     context['dms_form'] = SelectDmsForm(request.POST or None)
     if IngForm.is_valid():
+        print(ckb.dms_name)
         k = open('static/static/Configs/base_config.reg', 'r')
         lines = k.readlines()
         new_lines = lines
         k.close()
-        path = '[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\\' + ckb.dms_name
+        new_lines.append('[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\\' + ckb.dms_name + '\n')
+        path = '[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\\' + ckb.dms_name + '\n'
         for j in IngForm.cleaned_data:
             if type(IngForm.cleaned_data[j]) is int:
                 base = 'dword:00000000'
                 cleaned = str(hex(IngForm.cleaned_data[j])).replace('0x', '')
                 base = base[:-len(cleaned)]
                 IngForm.cleaned_data[j] = base + cleaned
-                new_lines.insert(lines.index(path) + 1, '"{}"={}\n'.format(IngForm.fields[j].label, IngForm.cleaned_data[j]))
+                new_lines.insert(lines.index(path) + 1,
+                                 '"{}"={}\n'.format(IngForm.fields[j].label, IngForm.cleaned_data[j]))
             else:
                 new_lines.insert(lines.index(path) + 1,
                                  '"{}"="{}"\n'.format(IngForm.fields[j].label, IngForm.cleaned_data[j]))

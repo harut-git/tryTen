@@ -4,38 +4,11 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Zero]
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin]
-"CurrentDms"="iManage"
-"UseCategories"=dword:00000001
-"DisableAddInSubjectKey"="zero-deactivate"
-"StatusRefreshIntervalMin"=dword:00000000
-"SelectionTimeoutMs"=dword:00000005
-"CleanStatusesAndCategories"=dword:00000001
-"MaxArchiveFiles"=dword:00000005
-"ReconnectTimeoutMin"=dword:00000001
-"BatchProcessingIntervalMs"=dword:00000032
-"ItemResyncIntervalMs"=dword:00000005
-"OutlookFolderScanIntervalMs"=dword:00000064
-"OutlookFolderResyncIntervalMin"=dword:000001a4
-"OutlookFolderSyncDepthDays"=dword:0000003c
-"AttributesSyncRefreshDays"=dword:00000001
-"ServiceLogLevel"="info"
-"ClientLogLevel"="info"
-"InternalDomains"=""
 
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses]
 
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage]
-"BaseUri"="https://10.1.1.5/"
-"PrimaryCabinetId"="iwork"
-"SupportedAuthType"=dword:00000002
-
-
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets]
-
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets\iwork]
-"TopPaneAttributes"="1,2,0,3"
-"SidePaneAttributes"="1,2,0,3"
-"DefaultClassForEmail"=""
-"DefaultFolderForEmail"="EMAIL"
-"PredictionAttributes"="1,2,0"
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage
+"AppId"="sdsdsdsdsd"
+"SupportedAuthType"="0"
+"BaseUri"="http://10.1.1.5"
