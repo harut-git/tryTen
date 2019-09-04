@@ -33,7 +33,9 @@ urlpatterns = [
     url(r'^generate/$', generate_views.generate_form, name='generate_form'),
     url(r'^send/$', smtp_views.sender_form, name='sender_form'),
     url(r'^dms/$', dynamic_views.dms, name='dms'),
+    url(r'^zero/$', generate_views.home, name='zero_home'),
     url(r'^cabinets/$', dynamic_views.cabinets, name='cabinets'),
+    url(r'^finalize/$', dynamic_views.finalize, name='finalize'),
     url(r'^accounts/', include('allauth.urls')),
 
 ]

@@ -2,24 +2,24 @@
 {% block title %}Dynamic Forms{% endblock %}
 {% block dynamic_active %}active{% endblock %}
 {% load widget_tweaks %}
+{% load staticfiles %}
 
 {% block body %}
-    <script type="text/javascript">
-var cabinet_exists = {{ cabinet_exists }};  // no_record_check **must** be an integer
-if (cabinet_exists == 1) {
-    alert('Cabinet already exists!');
-}
-else {
-    alert('Cabinet added!');
-}
-</script>
+
+    {% if confirm_message %}
+    <p>{{ confirm_message }}</p>
+    <a href="{% static "Configs/generated.reg" %}">Download!</a>
+{% endif %}
+
+    {% if OutlookAddinForm %}
+
 <div class="row">
   <div class="col-sm-12">
     <div class="page-header">
-      <h2>Add Cabinet Settings</h2>
-      <form action="{% url 'cabinets' %}" class="form-hotizontal" method="POST">
+      <h2>Outlook Addin Settings</h2>
+      <form action="{% url 'finalize' %}" class="form-hotizontal" method="POST">
         {% csrf_token %}
-        {% for field in CabinetForm %}
+        {% for field in OutlookAddinForm %}
         <div class="form-group row">
           <div class="col-sm-6">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -31,8 +31,7 @@ else {
         <div class="form-group row">
           <div class="col-sm-6">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="submit" class="btn btn-primary">Add Cabinet</button>
-                <a class="btn btn-success" href="{% url 'finalize' %}">Finalize</a>
+                <button type="submit" class="btn btn-primary">Get the reg file!</button>
             </div>
           </div>
         </div>
@@ -40,4 +39,5 @@ else {
     </div>
   </div>
 </div>
+    {% endif %}
 {% endblock %}

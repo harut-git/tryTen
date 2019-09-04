@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="page-header">
-      <h2>Choose DMS</h2>
+      <h2>Choose DMS (Works iManage only!)</h2>
       <form action="{% url 'dms' %}" class="form-hotizontal" method="POST">
         {% csrf_token %}
         {% for field in dms_form %}

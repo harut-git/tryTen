@@ -12,9 +12,9 @@ from smtp_send.Utils.SmtpSender import send_message
 names = [None, 'Andrew McCartney', 'Mike Ross', 'Donna Paulsen', 'Daniel Whitehall']
 print('---------------------------', os.getcwd())
 # subjects = ['I was right - and that’s not good for you', '13 email marketing trends you must know', 'Before you write another blog post, read this', 'We’re starting in 5 HOURS', 'It’s time to rethink Black Friday', 'How to Google-proof your mobile site in 2017', ]
-# inp = pd.read_csv('smtp_send/Utils/abcnews-date-text.csv')
-# inp.head(3)
-# text_model = markovify.NewlineText(inp.headline_text, state_size = 2)
+inp = pd.read_csv('smtp_send/Utils/abcnews-date-text.csv')
+inp.head(3)
+text_model = markovify.NewlineText(inp.headline_text, state_size=2)
 # for i in range(5):
 #     print(text_model.make_sentence())
 
@@ -35,7 +35,7 @@ def prepare_data(test_account_id, email):
         "host": "smtp.gmail.com",
         "username": test_account_id,
         "password": accs[test_account_id][1],
-        "subject": 'text',
+        "subject": text_model.make_sentence(),
         "to": email,
         "from": accs[test_account_id][0],
         "text": text()

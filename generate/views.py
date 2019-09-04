@@ -82,3 +82,9 @@ def generate_form(request):
     context = {'form1': form1, 'form2': form2, 'form3': form3, 'confirm_message': confirm_message}
     template = 'generate_form.html'
     return render(request, template, context)
+
+
+def home(request):
+    context = {}
+    template = 'zero_home.html'
+    return render(request, template, context)

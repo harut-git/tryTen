@@ -4,11 +4,22 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Zero]
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin]
+"UseCategories"=dword:00000001
+"DisableAddInSubjectKey"="qwc"
+"InternalDomains"="zeroapp.ai"
+"CurrentDms"="iManage"
 
 
 [HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses]
 
-[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage
-"AppId"="sdsdsdsdsd"
-"SupportedAuthType"="0"
-"BaseUri"="http://10.1.1.5"
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage]
+"AppId"="ajsvcjhdc"
+"SupportedAuthType"=dword:00000001
+"BaseUri"="https://10.1.1.5"
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets]
+[HKEY_CURRENT_USER\Software\Zero\OutlookAddin\Dmses\iManage\Cabinets\asdc]
+"TopPaneAttributes"="1,1"
+"SidePaneAttributes"="10,1"
+"DefaultClassForEmail"="asdcasdc"
+"DefaultFolderForEmail"="asdc"
+"PredictionAttributes"="asdc"
