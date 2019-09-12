@@ -1,10 +1,9 @@
 import smtplib
-import time
 from email.mime.text import MIMEText
 from email.utils import make_msgid
 
 
-def send_message(host, username, password, subject, msg_to, msg_from, msg_text):
+def send_message(host, port, username, password, subject, msg_to, msg_from, msg_text):
     subject = subject
     message = msg_text
     send_from = msg_from
@@ -16,7 +15,7 @@ def send_message(host, username, password, subject, msg_to, msg_from, msg_text):
     send_to = [msg_to]
 
     smtp_server = host
-    smtp_port = 465
+    smtp_port = port
     user_name = username
     password = password
     try:
@@ -25,6 +24,7 @@ def send_message(host, username, password, subject, msg_to, msg_from, msg_text):
         server.login(user_name, password)
         server.sendmail(send_from, send_to, msg.as_string())
         print("Email sent!")
+        server.quit()
         return msg['Message-ID']
     except Exception as e:
         print("Something went wrong")
@@ -54,13 +54,14 @@ def send_internal_message(host, username, password, subject, msg_to, msg_from, m
         server.login(user_name, password)
         server.sendmail(send_from, send_to, msg.as_string())
         print("Email sent!")
+        server.quit()
         return msg['Message-ID']
     except Exception as e:
         print("Something went wrong")
         print(e)
 
 
-def sendReply(host, username, password, subject, msg_to, msg_from, msg_text, msg_id):
+def sendReply(host, port, username, password, subject, msg_to, msg_from, msg_text, msg_id):
     to_email = msg_to
     username = username
     message = msg_text
@@ -69,8 +70,11 @@ def sendReply(host, username, password, subject, msg_to, msg_from, msg_text, msg
     msg['To'] = msg_to
     msg['Subject'] = "RE: " + subject
     msg['In-Reply-To'] = msg_id
-
-    server = smtplib.SMTP_SSL(host, 465)
+    if port == 465:
+        server = smtplib.SMTP_SSL(host, port)
+    else:
+        server = smtplib.SMTP(host, port)
+        server.starttls()
     try:
 
         # identify ourselves, prompting server for supported features

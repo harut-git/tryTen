@@ -4,10 +4,10 @@ from multiprocessing import cpu_count, freeze_support
 from multiprocessing.pool import Pool
 
 from lorem import text, sentence
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-import markovify #Markov Chain Generator
+import pandas as pd  # data processing, CSV file I/O (e.g. pd.read_csv)
+import markovify  # Markov Chain Generator
 # Any results you write to the current directory are saved as output.
-from smtp_send.Utils.SmtpSender import send_message
+from smtp_send.Utils.SmtpSender import send_message, sendReply
 
 names = [None, 'Andrew McCartney', 'Mike Ross', 'Donna Paulsen', 'Daniel Whitehall']
 print('---------------------------', os.getcwd())
@@ -27,12 +27,14 @@ accs = {
     'test4zeroapp@gmail.com': ('Daniel Whitehall', "Test123321")
 }
 
-jobs = ['kleithkevin@gmail.com', 'smithjjhn@gmail.com', 'test1zeroapp@gmail.com', 'test2zeroapp@gmail.com', 'test3zeroapp@gmail.com', 'test4zeroapp@gmail.com']
+jobs = ['kleithkevin@gmail.com', 'smithjjhn@gmail.com', 'test1zeroapp@gmail.com', 'test2zeroapp@gmail.com',
+        'test3zeroapp@gmail.com', 'test4zeroapp@gmail.com']
 
 
 def prepare_data(test_account_id, email):
     sample = {
         "host": "smtp.gmail.com",
+        "port": 465,
         "username": test_account_id,
         "password": accs[test_account_id][1],
         "subject": text_model.make_sentence(),
@@ -42,6 +44,7 @@ def prepare_data(test_account_id, email):
     }
     send_message(
         host=sample['host'],
+        port=sample['port'],
         username=sample['username'],
         password=sample['password'],
         subject=sample['subject'],
@@ -50,3 +53,52 @@ def prepare_data(test_account_id, email):
         msg_text=sample['text']
 
     )
+
+
+def prepare_conversation_data(test_account_id, email, username, pswd, threads_count):
+    sample = {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "username": test_account_id,
+        "password": accs[test_account_id][1],
+        "subject": text_model.make_sentence(),
+        "to": email,
+        "from": accs[test_account_id][0],
+        "text": text()
+    }
+    msg_id = send_message(
+        host=sample['host'],
+        port=sample['port'],
+        username=sample['username'],
+        password=sample['password'],
+        subject=sample['subject'],
+        msg_to=sample['to'],
+        msg_from=sample['from'],
+        msg_text=sample['text']
+
+    )
+    sample_reply = {"host": "smtp.office365.com", "username": username, "password": pswd,
+                    "subject": sample['subject'], "to": email, "from": accs[test_account_id][0],
+                    "text": text(), 'In-Reply-To': msg_id}
+    for _ in range(threads_count):
+        sendReply(host=sample_reply['host'],
+                  port=587,
+                  username=sample_reply['username'],
+                  password=sample_reply['password'],
+                  subject=sample_reply['subject'],
+                  msg_to=sample_reply['to'],
+                  msg_from=sample_reply['from'],
+                  msg_text=sample_reply['text'],
+                  msg_id=sample_reply['In-Reply-To']
+                  )
+        time.sleep(10)
+        sendReply(host=sample['host'],
+                  port=465,
+                  username=sample['username'],
+                  password=sample['password'],
+                  subject=sample['subject'],
+                  msg_to=sample['to'],
+                  msg_from=sample['from'],
+                  msg_text=sample['text'],
+                  msg_id=sample_reply['In-Reply-To']
+                  )
